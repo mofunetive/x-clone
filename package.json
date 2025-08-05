@@ -9,6 +9,8 @@
     "check-types": "turbo run check-types"
   },
   "devDependencies": {
+    "@tanstack/router-cli": "^1.130.15",
+    "@tanstack/router-plugin": "^1.130.15",
     "prettier": "^3.6.2",
     "turbo": "^2.5.5",
     "typescript": "5.8.3"
@@ -22,6 +24,12 @@
     "packages/*"
   ],
   "dependencies": {
-    "@supabase/supabase-js": "^2.53.0"
+    "@supabase/auth-ui-react": "^0.4.7",
+    "@supabase/auth-ui-shared": "^0.1.8",
+    "@supabase/supabase-js": "^2.53.0",
+    "@tailwindcss/vite": "^4.1.11",
+    "@tanstack/react-router": "^1.130.12",
+    "@tanstack/react-router-devtools": "^1.130.13",
+    "tailwindcss": "^4.1.11"
   }
 }
