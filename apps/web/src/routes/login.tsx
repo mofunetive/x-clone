@@ -3,16 +3,17 @@ import { useState, useEffect } from 'react'
 import { createClient, type Session } from '@supabase/supabase-js'
 import { Auth } from '@supabase/auth-ui-react'
 import { ThemeSupa } from '@supabase/auth-ui-shared'
+import { Link } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/login')({
-  component: RouteComponent,
+    component: RouteComponent,
 })
 const supabase = createClient(import.meta.env.VITE_SUPABASE_URL, import.meta.env.VITE_SUPABASE_ANON_KEY)
 
 function RouteComponent() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
     // Event handlers to update state variables
     const handleNameChange = (event) => {
@@ -27,13 +28,13 @@ function RouteComponent() {
         setPassword(event.target.value);
     }
     async function signInWithEmail() {
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email: email,
-      password: password,
-    })
-    console.log('Sign in data:', data);
-    
-  }
+        const { data, error } = await supabase.auth.signInWithPassword({
+            email: email,
+            password: password,
+        })
+        console.log('Sign in data:', data);
+
+    }
     const handleSubmit = (event) => {
         // Prevent default form submission
         event.preventDefault();
@@ -41,7 +42,7 @@ function RouteComponent() {
         console.log('Email:', email);
         signInWithEmail();
     };
-    
+
 
     return (
         <div className="form-container">
@@ -63,7 +64,7 @@ function RouteComponent() {
                         onChange={handleEmailChange}
                     />
                 </div>
-                 <div className="form-group">
+                <div className="form-group">
                     <label>Password:</label>
                     <input
                         type="password"
@@ -71,9 +72,18 @@ function RouteComponent() {
                         onChange={handlePasswordChange}
                     />
                 </div>
-                <button type="submit">Submit</button>
+                <div className="flex gap-4">
+                    <button type="submit">Submit</button>
+
+                    <Link to="/signup">signup</Link>
+                </div>
+
+
+
+
+
             </form>
         </div>
     );
-  
+
 }
